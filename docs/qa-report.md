@@ -1,0 +1,36 @@
+# QA report
+
+Date: 1 November 2026. Environment: local Node static server (`tools/serve.mjs`), tested both at the root (`/`) and in a subdirectory (`/demos/therapy/`).
+
+## Checks performed and results
+
+| Check | Tool / method | Result |
+|---|---|---|
+| Internal links and assets (pages, CSS, JS, fonts, every `srcset` candidate) | `tools/check.mjs` crawler, root and subdirectory | 13 pages, 49 linked assets, **0 problems** in both locations |
+| One H1 per page; unique titles and descriptions; `noindex, nofollow`; demo notice | `tools/check.mjs` | **Pass** on all 13 pages |
+| No root-absolute links (subdirectory safety) | `tools/check.mjs` | **Pass** |
+| `<img>` width, height and alt present | `tools/check.mjs` | **Pass** |
+| Horizontal overflow at 320, 390, 768 and 1440 px | In-browser iframe measurement (Claude built-in browser) | **None** on all 13 pages |
+| Console errors | Headless Edge (Chromium) via the DevTools protocol, 4 pages × 2 sizes | **None** |
+| Mobile menu: accessible name, `aria-expanded`, focus moves into the menu, Escape closes the sub-menu then the menu and returns focus to the toggle | Real key presses in the built-in browser at 375 px | **Pass** (after fixing a 54 px offset caused by `backdrop-filter` on the sticky header) |
+| Therapy sub-menu by keyboard (Enter) and current-page state | Built-in browser | **Pass**: `aria-expanded` toggles and Couples Therapy is marked `aria-current` |
+| Desktop sub-menu by hover/click/focus | Code review plus desktop screenshot | Implemented as a click/Enter disclosure that closes on focus-out, outside click or Escape. **Touch on a physical device not tested.** |
+| Form preview sends nothing | Built-in browser: resource-timing count before and after, plus cookies and storage | **0 new requests, 0 cookies, 0 localStorage or sessionStorage entries.** Fieldset disabled; no `action`; message "Demo only — no enquiry has been sent." delivered through `role="status"` `aria-live="polite"` |
+| Reduced motion | Headless Edge with `prefers-reduced-motion: reduce` emulated | **Pass**: hero animations resolve to `none` |
+| 200% zoom | Equivalent reflow widths: a 1440 px window at 200% ≈ 720 CSS px; 320 px ≈ 400% of 1280 | No overflow at 320, 390 or 768 px. **Browser zoom control itself not exercised.** |
+| Colour contrast | Computed WCAG ratios for every text/background token pair (see design-rationale.md) | All text pairs ≥ 4.5:1. Sage and antique gold used only decoratively. Gold-text on stone (4.3:1) is not used for body text. |
+| Structural accessibility: landmarks, heading order, `lang="en-AU"`, labelled controls, named links/buttons, valid ARIA references, duplicate ids, target size ≥ 24 px | Custom in-page audit script, 13 pages | One broken `aria-labelledby` found and **fixed**; now **0 issues** |
+| Article length | Word count of article bodies | 496 / 473 / ~430 words (first-appointment extended after a 385-word first draft) |
+| Unsupported claims (certification, guarantees, free consultation, testimonials, ratings) | grep over the built HTML | Clean. The only match is "does not guarantee a particular outcome". |
+| Visual review | Full-page screenshots in `docs/screenshots/` (Home, Couples, EFT, Contact × desktop 1440 / mobile 390) | Fixed the hero frame misalignment on mobile, a shorter mobile hero crop, and the radio layout on the Contact form |
+
+## Not run / unverified
+- **axe-core automated scan:** not run. Loading axe from a CDN into the page was blocked by this session's safety policy. Run it on the deployed demo, or locally with an installed axe extension.
+- **Lighthouse / PageSpeed scores:** not measured. Indicative page weight for Home on desktop is about 200 KB before lazy images: 32 KB CSS, 3.5 KB JS, 2 woff2 fonts (~66 KB), an 83 KB hero WebP, plus HTML. On mobile the hero is a 29 KB WebP. These are file sizes, not a performance score.
+- **Screen reader testing** (NVDA, VoiceOver) and **real touch devices** (iOS Safari, Android Chrome): not tested.
+- **No automated test can establish full WCAG conformance.** No compliance claim is made.
+
+## Open issues
+- The 404 page loses its styling for missing *nested* URLs (see deployment-plan.md).
+- The 1800RESPECT number was not re-verified online in this session.
+- All clinical and practice content is provisional until the therapist reviews it.

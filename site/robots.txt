@@ -1,0 +1,3 @@
+# Demo site. Crawling is allowed so search engines can see the noindex directive on every page.
+User-agent: *
+Allow: /

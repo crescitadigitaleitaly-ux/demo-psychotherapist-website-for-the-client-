@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en-AU" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service page template | The Relational Practice — Concept</title>
+<meta name="description" content="Template for an additional service page, kept outside the main navigation until the client supplies content.">
+<!-- Demonstration site: keep out of search results. noindex is not access protection. -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#3E4A3A">
+<!-- Deferred until a deployment destination is approved (see docs/deployment-plan.md):
+     <link rel="canonical" href="https://APPROVED-DOMAIN/service-template.html">
+     <meta property="og:url" content="https://APPROVED-DOMAIN/service-template.html">
+     <meta property="og:image" content="https://APPROVED-DOMAIN/assets/images/social-preview.jpg"> -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Service page template | The Relational Practice — Concept">
+<meta property="og:description" content="Template for an additional service page, kept outside the main navigation until the client supplies content.">
+<meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/CormorantGaramond-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/SourceSans3-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/main.css">
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<div class="demo-bar" role="note"><strong>Concept website · Demonstration only.</strong> Names, imagery and content are illustrative. <a href="privacy.html">About this demo</a></div>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand__name">The Relational Practice</span>
+      <span class="brand__tag">Concept · Sydney</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span class="nav-toggle__bars" aria-hidden="true"></span><span class="nav-toggle__text">Menu</span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <ul class="nav__list">
+      <li><a class="nav__link" href="about.html">About</a></li>
+      <li class="has-sub">
+        <button class="nav__parent" type="button" aria-expanded="false" aria-controls="subnav-therapy">Therapy<svg viewBox="0 0 10 6" aria-hidden="true" focusable="false"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button>
+        <ul class="subnav" id="subnav-therapy">
+          <li><a href="individual-therapy.html">Individual Therapy</a></li>
+          <li><a href="couples-therapy.html">Couples Therapy</a></li>
+          <li><a href="emotionally-focused-therapy.html">Emotionally Focused Therapy</a></li>
+        </ul>
+      </li>
+      <li><a class="nav__link" href="resources.html">Resources</a></li>
+      <li><a class="nav__link" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav__cta"><a class="btn" href="contact.html">Enquire about therapy</a></div>
+    </nav>
+  </div>
+</header>
+<main id="main" tabindex="-1">
+<section class="page-hero page-hero--plain" aria-labelledby="page-title">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li>Therapy</li><li aria-current="page">Service template</li></ol></nav>
+    <p class="eyebrow">Additional service · template</p>
+    <h1 id="page-title">Service page <em>template</em></h1>
+    <p class="lead">This page is a ready-made layout for an additional service, if the client’s sitemap includes one. It is intentionally empty of clinical claims and is not linked from the main navigation.</p>
+  </div>
+</section>
+
+<section class="section section--paper" aria-labelledby="intro-title">
+  <div class="wrap cols-2">
+    <div>
+      <p class="eyebrow">Introduction</p>
+      <h2 id="intro-title">Service introduction</h2>
+    </div>
+    <div class="placeholder" data-replace="service-intro">
+      <span class="placeholder__label">Client copy</span>
+      <p class="mb-0">Two or three paragraphs introducing the service, who it is for and how it relates to the practice’s relational approach.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="who-title">
+  <div class="wrap split split--top">
+    <div class="split__media split__media--wide offset-media">
+      <picture>
+  <source type="image/webp" srcset="assets/images/eucalyptus-640.webp 640w, assets/images/eucalyptus-1200.webp 1200w" sizes="(min-width: 768px) 45vw, 100vw">
+  <img src="assets/images/eucalyptus-1200.jpg" srcset="assets/images/eucalyptus-640.jpg 640w, assets/images/eucalyptus-1200.jpg 1200w" sizes="(min-width: 768px) 45vw, 100vw" width="1200" height="800" alt="" loading="lazy" decoding="async">
+</picture>
+    </div>
+    <div>
+      <p class="eyebrow">Who it may suit</p>
+      <h2 id="who-title">Section heading</h2>
+      <div class="placeholder" data-replace="service-who">
+        <span class="placeholder__label">Client copy</span>
+        <p class="mb-0">A short list or paragraph describing situations this service may help with, confirmed by the therapist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--stone" aria-labelledby="sessions-title">
+  <div class="wrap cols-2">
+    <div>
+      <p class="eyebrow">In practice</p>
+      <h2 id="sessions-title">What sessions involve</h2>
+    </div>
+    <div class="placeholder" data-replace="service-sessions">
+      <span class="placeholder__label">Client copy</span>
+      <p class="mb-0">General description of the process, format, frequency and any practical arrangements.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="faq-title">
+  <div class="wrap">
+    <p class="eyebrow">Questions</p>
+    <h2 id="faq-title">Frequently asked questions</h2>
+    <div class="faq">
+      <details>
+        <summary>Question supplied by the client</summary>
+        <div class="faq__body"><p class="tbc" data-replace="service-faq">Answer supplied by the client</p></div>
+      </details>
+      <details>
+        <summary>Second question supplied by the client</summary>
+        <div class="faq__body"><p class="tbc">Answer supplied by the client</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" aria-labelledby="next-title">
+  <div class="wrap">
+    <div class="cta-simple">
+      <div>
+        <h2 id="next-title">Closing invitation</h2>
+        <p>A short, reassuring sentence leading to the enquiry page.</p>
+      </div>
+      <a class="btn" href="contact.html">Enquire about therapy</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand__name">The Relational Practice</span>
+        <p>A concept website for an individual and couples psychotherapy practice in Sydney, Australia, with a focus on relationships, attachment and Emotionally Focused Therapy.</p>
+      </div>
+      <div>
+        <h2>Therapy</h2>
+        <ul>
+          <li><a href="individual-therapy.html">Individual Therapy</a></li>
+          <li><a href="couples-therapy.html">Couples Therapy</a></li>
+          <li><a href="emotionally-focused-therapy.html">Emotionally Focused Therapy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Practice</h2>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Enquire about therapy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Information</h2>
+        <ul>
+          <li><a href="privacy.html">Demo privacy information</a></li>
+          <li><a href="contact.html#support">Urgent support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p><strong>Concept website · Demonstration only.</strong> “The Relational Practice” is a temporary fictional identity created to demonstrate design and layout. It is not a real practice, and no therapist, service, availability, fee or qualification is represented. Names, imagery and content are illustrative; clinical content is provisional and requires review by the practising therapist before any production use.</p>
+      <p>Photography from Unsplash, used under the Unsplash Licence. Rooms shown are not the practice’s premises. If you need urgent help in Australia, call 000 or Lifeline on 13 11 14.</p>
+      <p>Design concept by Crescita Digitale Italia.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
