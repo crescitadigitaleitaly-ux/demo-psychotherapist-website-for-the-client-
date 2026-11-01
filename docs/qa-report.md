@@ -29,9 +29,18 @@ Date: 1 November 2026. Environment: local Node static server (`tools/serve.mjs`)
 - Headers: HTTPS 200; HTTP → HTTPS 301; `X-Robots-Tag: noindex, nofollow` on HTML and assets; HTML `no-cache`; images and fonts cached for 1 year; missing URL returns 404.
 - Browser (built-in Chromium): fonts loaded, hero image loaded, JS enhanced, **0 console errors, 0 third-party requests**.
 
+## PageSpeed Insights (pagespeed.web.dev, Lighthouse 13.6, live homepage)
+| Run | Performance | Accessibility | Best Practices | SEO | FCP | LCP | TBT | CLS | SI |
+|---|---|---|---|---|---|---|---|---|---|
+| Mobile, 1 Nov 2026 16:22 | 100 | 100 | 100 | 69 | 0.8 s | 0.8 s | 0 ms | 0 | 2.0 s |
+| Desktop, 1 Nov 2026 16:29 | 100 | 100 | 100 | 69 | 0.3 s | 0.4 s | 0 ms | 0 | 0.9 s |
+
+- SEO 69 comes only from "Page is blocked from indexing", which is the intended noindex on the demo.
+- An earlier run scored Accessibility 97, flagging gold eyebrow text on stone (4.3:1) and the decorative "R" in the portrait placeholder. Both were fixed (gold-text #6E5B32; "R" moved to CSS) and the Hostinger CDN cache was cleared.
+- One mobile run (16:20) reported CLS 0.54 and Performance 79. A local throttled probe (`tools/cls-probe.mjs`, slow 4G, 4x CPU) measured CLS 0.000, and the next two runs measured 0. The outlier is most likely Hostinger's CDN browser-check page being served to the test agent. Recorded here as a known variance.
+
 ## Not run / unverified
 - **axe-core automated scan:** not run. Loading axe from a CDN into the page was blocked by this session's safety policy. Run it on the deployed demo, or locally with an installed axe extension.
-- **Lighthouse / PageSpeed scores:** not measured. Indicative page weight for Home on desktop is about 200 KB before lazy images: 32 KB CSS, 3.5 KB JS, 2 woff2 fonts (~66 KB), an 83 KB hero WebP, plus HTML. On mobile the hero is a 29 KB WebP. These are file sizes, not a performance score.
 - **Screen reader testing** (NVDA, VoiceOver) and **real touch devices** (iOS Safari, Android Chrome): not tested.
 - **No automated test can establish full WCAG conformance.** No compliance claim is made.
 
