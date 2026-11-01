@@ -17,5 +17,6 @@ Static HTML/CSS/vanilla-JS demo of a Sydney psychotherapy practice website, made
 
 ## Status (2026-11-01)
 - Local build complete: 7 main pages, 3 articles, privacy, 404 and a service template. QA is in `docs/qa-report.md`.
-- Owner decisions: static HTML (not WordPress) for the demo; deploy to a **new Hostinger subdomain** (proposed `therapy.mouzzambuild.com`). The exact domain is **not yet confirmed**, so nothing is deployed. See `docs/deployment-plan.md`.
+- Owner decisions: static HTML (not WordPress) for the demo.
+- **Live at https://therapy.mouzzambuild.com/** (deployed 2026-11-01, owner-approved). Hostinger account u299383397, a subdomain of the mouzzambuild.com website, root `public_html/therapy`. To redeploy: rebuild, get a fresh upload URL via the Hostinger MCP `hosting_files_generate-upload-url` (username u299383397, domain therapy.mouzzambuild.com), then run `tools/upload.mjs` with HOST_URL, HOST_AUTH and HOST_REST set. See `docs/deployment-plan.md`.
 - Not run: axe-core (CDN load blocked in session), Lighthouse, screen readers, real devices.

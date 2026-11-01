@@ -18,6 +18,10 @@ const outDir = join(here, '..', 'site');
 
 const SITE = 'The Relational Practice';
 const RATIOS = { '4x5': [4, 5], '3x2': [3, 2] };
+// Approved deployment (2026-11-01). Used only for absolute canonical and social-preview URLs;
+// every link and asset in the pages stays relative.
+const ORIGIN = process.env.SITE_ORIGIN || 'https://therapy.mouzzambuild.com/';
+const pageUrl = path => ORIGIN + (path === 'index.html' ? '' : path);
 
 const NAV = [
   { key: 'about', label: 'About', href: 'about.html' },
@@ -83,10 +87,9 @@ function layout(meta, body, root) {
 <!-- Demonstration site: keep out of search results. noindex is not access protection. -->
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#3E4A3A">
-<!-- Deferred until a deployment destination is approved (see docs/deployment-plan.md):
-     <link rel="canonical" href="https://APPROVED-DOMAIN/${meta.path}">
-     <meta property="og:url" content="https://APPROVED-DOMAIN/${meta.path}">
-     <meta property="og:image" content="https://APPROVED-DOMAIN/assets/images/social-preview.jpg"> -->
+${meta.nav === 'none' && meta.path === '404.html' ? '' : `<link rel="canonical" href="${pageUrl(meta.path)}">
+<meta property="og:url" content="${pageUrl(meta.path)}">
+`}<meta property="og:image" content="${ORIGIN}assets/images/social-preview.jpg">
 <meta property="og:type" content="website">
 <meta property="og:title" content="${esc(meta.title)}">
 <meta property="og:description" content="${esc(meta.description)}">

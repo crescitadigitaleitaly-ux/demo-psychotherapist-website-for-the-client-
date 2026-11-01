@@ -24,6 +24,11 @@ Date: 1 November 2026. Environment: local Node static server (`tools/serve.mjs`)
 | Unsupported claims (certification, guarantees, free consultation, testimonials, ratings) | grep over the built HTML | Clean. The only match is "does not guarantee a particular outcome". |
 | Visual review | Full-page screenshots in `docs/screenshots/` (Home, Couples, EFT, Contact × desktop 1440 / mobile 390) | Fixed the hero frame misalignment on mobile, a shorter mobile hero crop, and the radio layout on the Contact form |
 
+## Live checks (https://therapy.mouzzambuild.com/, 1 November 2026)
+- `tools/check.mjs` against the live origin: 13 pages, 49 assets, **0 problems**.
+- Headers: HTTPS 200; HTTP → HTTPS 301; `X-Robots-Tag: noindex, nofollow` on HTML and assets; HTML `no-cache`; images and fonts cached for 1 year; missing URL returns 404.
+- Browser (built-in Chromium): fonts loaded, hero image loaded, JS enhanced, **0 console errors, 0 third-party requests**.
+
 ## Not run / unverified
 - **axe-core automated scan:** not run. Loading axe from a CDN into the page was blocked by this session's safety policy. Run it on the deployed demo, or locally with an installed axe extension.
 - **Lighthouse / PageSpeed scores:** not measured. Indicative page weight for Home on desktop is about 200 KB before lazy images: 32 KB CSS, 3.5 KB JS, 2 woff2 fonts (~66 KB), an 83 KB hero WebP, plus HTML. On mobile the hero is a 29 KB WebP. These are file sizes, not a performance score.

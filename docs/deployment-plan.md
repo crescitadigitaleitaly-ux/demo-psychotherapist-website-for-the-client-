@@ -1,6 +1,21 @@
-# Proposed deployment plan (not yet executed)
+# Deployment
 
-**Status:** awaiting explicit approval of the exact domain and destination. Nothing has been uploaded, and no DNS, hosting or WordPress setting has been changed.
+**Status: deployed 1 November 2026** to **https://therapy.mouzzambuild.com/**, approved by the owner in chat ("Yes, deploy there").
+
+What was done:
+- Created the subdomain `therapy` on the `mouzzambuild.com` website (Hostinger account u299383397), with document root `public_html/therapy`. This follows the same pattern as the `skincare`, `dental` and `aervek` demos. No portfolio files were changed, and no DNS records were edited by hand.
+- Uploaded the 68 files in `site/` (including `.htaccess`) with `tools/upload.mjs` (TUS).
+- Set canonical, `og:url` and `og:image` to the live origin in `src/build.mjs` (`SITE_ORIGIN`).
+- Verified live: HTTPS 200; HTTP 301 to HTTPS; `X-Robots-Tag: noindex, nofollow`; 404 status for missing URLs; `tools/check.mjs` reports 13 pages, 49 assets and 0 problems; no console errors; no third-party requests; TTFB about 0.4 s for the homepage HTML (one curl sample). The portfolio and skincare demo still return 200.
+- The portfolio does **not** link to the demo. Adding a link would be a separate, approved change.
+
+To redeploy after edits: rebuild, generate a new upload URL (keys expire after about 6 h), then run `HOST_URL=… HOST_AUTH=… HOST_REST=… node tools/upload.mjs`.
+
+Rollback: remove the `therapy` subdomain in hPanel and delete `public_html/therapy`.
+
+---
+
+The original proposal is kept below for reference.
 
 ## Agreed direction
 The owner chose to host this demo as a **new subdomain** on the existing Hostinger account, separate from the live portfolio, which stays untouched. This follows the same pattern as the existing `skincare.mouzzambuild.com` demo.
