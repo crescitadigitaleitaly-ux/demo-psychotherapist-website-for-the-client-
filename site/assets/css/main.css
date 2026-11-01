@@ -1,7 +1,7 @@
 /* The Relational Practice — Concept
    Static demo stylesheet. Design tokens live in :root; change them here first.
    Contrast notes (WCAG 2.x, measured): ink on ivory 10.8:1, olive on ivory 8.4:1,
-   muted on ivory 5.9:1, gold-text on ivory 5.1:1, ivory on olive 8.4:1,
+   muted on ivory 5.9:1, gold-text 5.9:1 on ivory and 5.0:1 on stone, ivory on olive 8.4:1,
    gold-light on olive 5.7:1. Sage (#A6AE96, 2.1:1) and antique gold (#B39B6A, 2.4:1)
    are used for rules, borders and ornaments only, never for text. */
 
@@ -20,7 +20,7 @@
   --charcoal: #343831;
   --ink: var(--charcoal);
   --muted: #5B5F54;
-  --gold-text: #7A6538;     /* text-safe gold, ivory backgrounds only */
+  --gold-text: #6E5B32;     /* text-safe gold on ivory, paper and stone */
   --gold-light: #D9C9A3;    /* text-safe gold, olive backgrounds only */
   --paper: #FBF9F5;
   --line: #D8D1C2;
@@ -249,6 +249,7 @@ body.nav-open { overflow: hidden; }
 .placeholder p:last-child, .placeholder ul:last-child { margin-bottom: 0; }
 .placeholder--portrait { aspect-ratio: 4 / 5; display: flex; flex-direction: column; justify-content: flex-end; background:
   linear-gradient(160deg, rgba(166, 174, 150, 0.35), rgba(230, 225, 214, 0.9) 55%), var(--stone); border-style: solid; border-color: var(--line); }
+.placeholder--portrait .placeholder__mark::before { content: "R"; }
 .placeholder--portrait .placeholder__mark { font-family: var(--serif); font-size: clamp(4rem, 3rem + 4vw, 7rem); color: var(--olive); opacity: 0.18; line-height: 1; margin-bottom: auto; font-style: italic; }
 .tbc { display: inline-block; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.04em; color: var(--gold-text); border: 1px dashed var(--gold); border-radius: var(--radius); padding: 0.05rem 0.5rem; background: var(--paper); white-space: normal; }
 .on-dark .tbc { color: var(--gold-light); background: transparent; border-color: var(--gold-light); }
